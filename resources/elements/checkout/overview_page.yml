@@ -1,0 +1,28 @@
+checkout_title: "xpath://span[contains(@class,'title')]"
+
+quantity_label: "class:cart_quantity"
+inventroy_name_label: "class:inventory_item_name"
+inventory_desc_label: "class:inventory_item_desc"
+
+
+price_value_label: "class:inventory_item_price"
+
+payment_info_label: "xpath://*[@class='summary_info_label'][1]"
+payment_value_label: "xpath://*[@class='summary_value_label'][1]"
+
+
+shipping_info_label: "xpath://*[@class='summary_info_label'][2]"
+shipping_value_label: "xpath://*[@class='summary_value_label'][2]"
+
+summary_subtotal_label: "class:summary_subtotal_label"
+summary_subtax_label: "class:summary_tax_label"
+summary_total_label: "class:summary_total_label"
+
+
+finish_button: "id:finish"
+
+
+finish_title: "class:header_secondary_container"
+finish_header_text: "class:complete-header"
+finish_body_text: "class:complete-text"
+finish_image: "class:pony_express"

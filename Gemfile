@@ -9,3 +9,5 @@ gem 'byebug', '~> 10.0', '>= 10.0.2'
 gem 'cucumber', '~> 5.3.0'
 
 gem 'yaml-lint', '~> 0.0.10'
+
+gem 'colorize'

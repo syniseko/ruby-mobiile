@@ -1,0 +1,4 @@
+title_product_label: "xpath://*[@id='inventory_item_container']/div/div/div[2]/div[1]"
+price_product_label: "xpath://*[@id='inventory_item_container']/div/div/div[2]/div[3]"
+cart_icon_button: "id:shopping_cart_container"
+add_to_cart_button: "xpath://*[(text() = 'Add to cart' or text() = 'Add to cart')]"

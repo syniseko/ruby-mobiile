@@ -37,9 +37,10 @@ And(/^User login with data account "([^"]*)"$/) do |testData|
   end
 end
 
+
 And(/^User click "([^"]*)"$/) do |element|
   begin
-
+    
     element = key_processor_element(element)
     user_click(element[0], element[1])
 
@@ -48,6 +49,48 @@ And(/^User click "([^"]*)"$/) do |element|
   end
 end
  
+
+And(/^User verify element "([^"]*)" with data translation "([^"]*)"$/) do |element,testData|
+  begin
+    
+    element = key_processor_element(element)
+    data = key_processor_translation(testData)
+    user_expect_with_data(element[0], element[1], data)
+
+
+  rescue Exception => e
+    raise e.message
+  end
+end
+
+
+And(/^User verify element "([^"]*)" attribute "([^"]*)" with data translation "([^"]*)"$/) do |element,attribute,testData|
+  begin
+    
+    element = key_processor_element(element)
+    data = key_processor_translation(testData)
+
+    user_expect_attribute_with_data(element[0], element[1], attribute, data)
+
+  rescue Exception => e
+    raise e.message
+  end
+end
+
+
+And(/^User fill element "([^"]*)" with data translation "([^"]*)"$/) do |element,testData|
+  begin
+  
+    element = key_processor_element(element)
+    data = key_processor_translation(testData)
+    user_fill(element[0], element[1], data)
+
+
+  rescue Exception => e
+    raise e.message
+  end
+end
+
 
 And(/^User wait (\d+) seconds/) do |number|
   begin
@@ -59,6 +102,25 @@ And(/^User wait (\d+) seconds/) do |number|
     error_handler(e)
   end
 end
+
+
+And(/^System screenshoot page$/) do
+  begin
+
+    snapshot_path = 'assets/screenshoot/screenshoot.png'
+    $driver.save_screenshot(snapshot_path)
+    file = File.open(snapshot_path)
+    attach(file,'image/png')
+
+  rescue Exception => e
+    error_handler(e)
+  end
+end
+
+
+
+
+
 
 
 #spesific test step
@@ -84,76 +146,26 @@ And(/^Verify data price products sort by highest to low$/) do
 end
 
 
-def loopingProducts
-  begin
-    dataArray = []
-    index = 1
-    loop do                          
-      if $driver.find_element(:xpath,"//*[@id='inventory_container']/div/div[#{index}]/div[2]/div[2]/div").displayed? == true
-         text = $driver.find_element(:xpath,"//*[@id='inventory_container']/div/div[#{index}]/div[2]/div[2]/div").text
-         dataArray << text
-         index+=1
-      else
-        break
-      end
-    end
-
-  rescue Exception => e
-     log "Data items product last on index #{index-1}" 
-     return dataArray
-  end
-end
 
 
 
-When(/^Search data$/) do
-  @driver.find_element(id:'email').send_keys("syniseko@wow.com")
-  sleep 2
-end
-
-
-When(/^I input data Email$/) do
-  #@driver.find_element(name: 'email').send_keys("syniseko@wow.com")
-  @driver.find_element(id:'pass').send_keys("Password95")
-end 
-
-
-When(/^I input data Password$/) do
-  @driver.find_element(name: 'password').send_keys("Password95")
-end 
-
-When(/^I input data Password2$/) do
-  @driver.find_element(name: 'passwordmatch').send_keys("Password95")
-end
-
-When(/^I click button register$/) do
-  #@driver.find_element(:xpath,"//android.widget.TextView[@text='"+arg1+"']").click
-  #@driver.find_element(:xpath,"//*/select[@ng-click='Register(register)']").click
-  @driver.find_element(:css,"input[ng-click='Register(register)']").click
- # //*[@id="content"]/div/div[2]/div[2]/div/form/p[2]/button
-end 
-
-When(/^back to main menu$/) do
-  @driver.find_element(xpath: '//*[@id="header"]/nav/div/div[1]/a/img').click
-end 
-
-When(/^close driver$/) do
-  @driver.quit
-end 
-
-
-
-#private functions
+############################################# PRIVATE FUNCTIONS #######################################
 
 def key_processor_login(data)
 
   login_data_hash = YAML.load_file "resources/test_data.yml"
-  key_data = "account"
   element_data_key = data
+  dataLogin = (login_data_hash[element_data_key])
 
-  @data_login = (login_data_hash[element_data_key])
+  return dataLogin
+end 
 
-  return @data_login
+def key_processor_translation(data)
+
+  translation_data_hash = YAML.load_file "resources/translation_data.yml"
+  dataTranslation = (translation_data_hash[data])
+
+  return dataTranslation
 end 
 
 
@@ -177,5 +189,26 @@ def key_processor_element(element)
 
   rescue Exception => e
     raise e.message
+  end
+end
+
+
+def loopingProducts
+  begin
+    dataArray = []
+    index = 1
+    loop do                          
+      if $driver.find_element(:xpath,"//*[@id='inventory_container']/div/div[#{index}]/div[2]/div[2]/div").displayed? == true
+         text = $driver.find_element(:xpath,"//*[@id='inventory_container']/div/div[#{index}]/div[2]/div[2]/div").text
+         dataArray << text
+         index+=1
+      else
+        break
+      end
+    end
+
+  rescue Exception => e
+     log "Data items product last on index #{index-1}" 
+     return dataArray
   end
 end

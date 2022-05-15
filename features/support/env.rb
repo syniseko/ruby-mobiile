@@ -10,10 +10,10 @@ require_relative '../../features/support/local_driver'
 
 
 #GLOBAL VAR SETTING
-ENV['BROWSER_TYPE'] = 'firefox'
+ENV['BROWSER_TYPE'] = 'chrome'
 ENV['OS'] = 'mac'
 ENV['URL'] = 'https://www.saucedemo.com/'
-ENV['DELAY_STEP'] = '2'
+ENV['DELAY_STEP'] = '1'
 
 
 begin

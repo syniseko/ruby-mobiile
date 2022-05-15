@@ -1,0 +1,34 @@
+product_title_label: "Sauce Labs Fleece Jacket"
+product_price_label: "$49.99"
+
+
+first_name_data: "Eko"
+last_name_data: "Adi Prabowo"
+zip_data: "40552"
+
+
+
+
+
+
+
+###final checkout overview
+checkout_title_label: "CHECKOUT: OVERVIEW"
+quantity_data: "1"
+checkout_product_desc_text: "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office."
+
+payment_info_text: "Payment Information:"
+payment_value_text: "SauceCard #31337"
+shipping_info_text: "Shipping Information:"
+shipping_value_text: "FREE PONY EXPRESS DELIVERY!"
+
+sub_total_text: "Item total: $49.99"
+tax_text: "Tax: $4.00"
+final_total_text: "Total: $53.99"
+
+
+finish_title_text: "CHECKOUT: COMPLETE!"
+finish_header_text: "THANK YOU FOR YOUR ORDER"
+finish_body_text: "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
+finish_image_url: "https://www.saucedemo.com/static/media/pony-express.46394a5d.png"
+
