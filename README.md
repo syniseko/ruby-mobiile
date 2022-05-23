@@ -1,4 +1,4 @@
-# **tokopedia-test**
+# **SAmple**
 
 before run, makesure you have ruby version >= ruby 2.7.2
 
